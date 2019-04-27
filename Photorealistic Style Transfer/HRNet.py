@@ -8,7 +8,7 @@ IN_MOMENTUM = 0.1
 
 class ReflectionConv(nn.Module):
     '''
-    使用 Reflection 填充以保证size不变的卷积层
+        Reflection padding convolution
     '''
     def __init__(self, in_channels, out_channels, kernel_size, stride):
         super(ReflectionConv, self).__init__()
@@ -24,7 +24,7 @@ class ReflectionConv(nn.Module):
 
 class ConvLayer(nn.Module):
     '''
-    使用全 0 填充以保证size不变的卷积层
+        zero-padding convolution
     '''
     def __init__(self, in_channels, out_channels, kernel_size, stride):
         super(ConvLayer, self).__init__()
@@ -71,7 +71,8 @@ class BasicBlock(nn.Module):
 
 class Upsample(nn.Module):
     '''
-    由于在 HRNet 中，上采样后通道数发生改变，所以需自己写一个 Upsample 类
+        Since the number of channels of the feature map changes after upsampling in HRNet.
+        we have to write a new Upsample class.
     '''
     def __init__(self, in_channels, out_channels, scale_factor, mode):
         super(Upsample, self).__init__()
